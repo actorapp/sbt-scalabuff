@@ -1,0 +1,4 @@
+> compile
+$ exists target/scala-2.10/src_managed/test0/Test0.scala
+$ exists target/scala-2.10/src_managed/test1/Test1.scala
+
