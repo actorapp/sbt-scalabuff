@@ -60,17 +60,18 @@ object ScalaBuffPlugin extends Plugin {
     val input = source / "protobuf"
     if (input.exists) {
       val output = sourceManaged
+      val commandLineOptions = List(
+          "-cp", classpath.map(_.data).mkString(File.pathSeparator), mainClass,
+          "--proto_path=" + input.toString, // processing single .proto files conflicts with protobuf import statements -> rather re-process all .protos if any has changed
+          "--scala_out=" + output.toString
+      ) ++ args
       val cached = FileFunction.cached(cache / "scalabuff", FilesInfo.lastModified, FilesInfo.exists) {
         (in: Set[File]) => {
           IO.delete(output)
           IO.createDirectory(output)
           Fork.java(
             javaHome,
-            List(
-              "-cp", classpath.map(_.data).mkString(File.pathSeparator), mainClass,
-              "--proto_path=" + input.toString, // processing single .proto files conflicts with protobuf import statements -> rather re-process all .protos if any has changed
-              "--scala_out=" + output.toString
-            ),
+            commandLineOptions,
             streams.log
           )
           (output ** ("*.scala")).get.toSet
