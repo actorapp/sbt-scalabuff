@@ -17,7 +17,13 @@ object ScalaBuffPlugin extends Plugin {
   lazy val scalabuffSettings = Seq[Project.Setting[_]](
     scalabuffArgs := Seq(),
     scalabuffMain := "net.sandrogrzicic.scalabuff.compiler.ScalaBuff",
-    scalabuffVersion := "1.3.8",
+    scalabuffVersion := "1.3.9",
+
+    resolvers += Resolver.url(
+      "Bintray-Resolve-erauer-maven",
+      url("https://dl.bintray.com/content/erauer/maven/"))(
+      Resolver.ivyStylePatterns),
+
     libraryDependencies <++= (scalabuffVersion in ScalaBuff)(version => 
       Seq(
         "net.sandrogrzicic" %% "scalabuff-compiler" % version % ScalaBuff.name,
