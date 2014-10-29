@@ -7,5 +7,7 @@ object build extends Build {
   lazy val root = Project(
     id = "root",
     base = file("."),
-    settings = Project.defaultSettings ++ scalabuffSettings).configs(ScalaBuff)
+    settings = Project.defaultSettings ++ scalabuffSettings ++ Seq(
+      "actor at bintray" at "http://dl.bintray.com/actor/maven"
+    )).configs(ScalaBuff)
 }

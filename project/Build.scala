@@ -6,7 +6,7 @@ object ScalaBuffBuild extends Build {
   lazy val project = Project(
     id = "root", 
     base = file("."),
-    settings = defaultSettings  
+    settings = defaultSettings
   )
 
   lazy val defaultSettings = Defaults.defaultSettings ++ Seq(

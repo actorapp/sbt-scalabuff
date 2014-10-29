@@ -1,5 +1,5 @@
-scalaVersion        := "2.11.1"
+scalaVersion        := "2.11.2"
 
-scalabuffArgs += "--target=2.11.1"
+scalabuffArgs += "--target=2.11.2"
 
-scalabuffVersion := "1.3.9"
+scalabuffVersion := "1.3.9.2"

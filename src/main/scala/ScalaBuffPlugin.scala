@@ -17,7 +17,7 @@ object ScalaBuffPlugin extends Plugin {
   lazy val scalabuffSettings = Seq[Project.Setting[_]](
     scalabuffArgs := Seq(),
     scalabuffMain := "net.sandrogrzicic.scalabuff.compiler.ScalaBuff",
-    scalabuffVersion := "1.3.9",
+    scalabuffVersion := "1.3.9.2",
     libraryDependencies <++= (scalabuffVersion in ScalaBuff)(version => 
       Seq(
         "net.sandrogrzicic" %% "scalabuff-compiler" % version % ScalaBuff.name,
